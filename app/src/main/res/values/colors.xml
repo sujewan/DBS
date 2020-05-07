@@ -10,4 +10,7 @@
 
     <color name="active_primary_color">#3F51B5</color>
     <color name="active_secondary_color">#1873e7</color>
+    <color name="colorDivider">#929497</color>
+    <color name="placeholder_title_color">#425465</color>
+
 </resources>

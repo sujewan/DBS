@@ -1,7 +1,10 @@
 package com.sujewan.dbs.model
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.android.parcel.Parcelize
 
+@Parcelize
 data class Article (
     @SerializedName("id")
     val id: Int,
@@ -17,4 +20,4 @@ data class Article (
 
     @SerializedName("avatar")
     val avatar: String
-)
+): Parcelable

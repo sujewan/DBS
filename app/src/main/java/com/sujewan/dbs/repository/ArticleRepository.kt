@@ -5,6 +5,7 @@ import com.sujewan.dbs.api.ApiResponse
 import com.sujewan.dbs.api.ArticleApi
 import com.sujewan.dbs.api.Resource
 import com.sujewan.dbs.model.Article
+import com.sujewan.dbs.model.ArticleDescription
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -29,6 +30,24 @@ constructor(val articleApi: ArticleApi) {
             }
 
         }.asLiveData
+    }
 
+    fun getArticleById(articleId: Int): LiveData<Resource<ArticleDescription>> {
+
+        return object : NetworkBoundResource<ArticleDescription, ArticleDescription>() {
+
+            override fun fetchService(): LiveData<ApiResponse<ArticleDescription>> {
+                return articleApi.getArticleById(articleId)
+            }
+
+            override fun onFetchFailed() {
+
+            }
+
+            override fun gatherFetchData(item: ArticleDescription): ArticleDescription {
+                return item
+            }
+
+        }.asLiveData
     }
 }

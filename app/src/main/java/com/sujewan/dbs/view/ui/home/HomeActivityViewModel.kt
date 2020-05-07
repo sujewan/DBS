@@ -13,6 +13,7 @@ class HomeActivityViewModel @Inject
 constructor(articleRepository: ArticleRepository) : ViewModel() {
 
     var articlesLiveData: LiveData<Resource<List<Article>>> = MutableLiveData()
+
     lateinit var adapter : ArticlesAdapter
     var firstTime = false
 

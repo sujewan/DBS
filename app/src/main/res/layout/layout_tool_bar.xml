@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layout_tool_bar"
+        xmlns:tools="http://schemas.android.com/tools"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/action_bar_height"
+        tools:showIn="@layout/fragment_article_detail">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:background="@drawable/home_gradiant_bg"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_width="0dp"
+            android:layout_height="0dp" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/img_back"
+            app:srcCompat="@drawable/ic_back"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:tint="@color/white"
+            android:padding="@dimen/common_menu_margin"
+            android:layout_width="@dimen/action_bar_height"
+            android:layout_height="@dimen/action_bar_height"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/lbl_title"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:gravity="center_vertical"
+            android:lines="1"
+            android:paddingStart="@dimen/common_margin"
+            android:paddingEnd="@dimen/common_margin"
+            app:layout_constraintStart_toEndOf="@+id/img_back"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/btn_edit"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:textSize="@dimen/tool_bar_title_text_size"
+            app:fontFamily="@font/nunito_regular"
+            android:textColor="@color/white"
+            android:text="@string/articles" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/btn_edit"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:gravity="center"
+            android:paddingStart="@dimen/common_margin"
+            android:paddingEnd="@dimen/common_margin"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:textSize="@dimen/tool_bar_title_text_size"
+            app:fontFamily="@font/nunito_semi_bold"
+            android:textColor="@color/white"
+            android:text="@string/edit" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

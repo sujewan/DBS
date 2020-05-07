@@ -13,7 +13,7 @@
         android:layout_height="wrap_content">
 
         <androidx.cardview.widget.CardView
-            android:id="@+id/cardView"
+            android:id="@+id/cardView_article"
             android:layout_marginTop="@dimen/common_small_margin"
             android:layout_marginBottom="@dimen/common_small_margin"
             android:layout_marginStart="@dimen/common_margin"
@@ -99,8 +99,8 @@
 
         <View android:layout_width="0dp"
             android:layout_height="@dimen/common_small_margin"
-            app:layout_constraintTop_toBottomOf="@+id/cardView"
-            app:layout_constraintStart_toStartOf="@+id/cardView"
-            app:layout_constraintEnd_toEndOf="@+id/cardView"/>
+            app:layout_constraintTop_toBottomOf="@+id/cardView_article"
+            app:layout_constraintStart_toStartOf="@+id/cardView_article"
+            app:layout_constraintEnd_toEndOf="@+id/cardView_article"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

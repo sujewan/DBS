@@ -90,7 +90,7 @@ class ArticleApiTest: BaseTest() {
         val articleDes = LiveDataTestUtil.getValue(service.getArticleById(1)).body
 
         val request: RecordedRequest = mockWebServer.takeRequest()
-        MatcherAssert.assertThat(request.path, CoreMatchers.`is`("/article/?id=1"))
+        MatcherAssert.assertThat(request.path, CoreMatchers.`is`("/article/1"))
         MatcherAssert.assertThat(articleDes, CoreMatchers.notNullValue())
 
         MatcherAssert.assertThat(articleDes?.id, CoreMatchers.`is`(1))

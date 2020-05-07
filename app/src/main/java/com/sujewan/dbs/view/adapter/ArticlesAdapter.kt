@@ -7,7 +7,7 @@ import com.sujewan.dbs.databinding.ItemArticleBinding
 import com.sujewan.dbs.model.Article
 import com.sujewan.dbs.view.ui.home.ItemArticleViewModel
 
-class ArticlesAdapter() : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class ArticlesAdapter(private val delegate: ArticlesAdapterDelegate) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     private val articleList = ArrayList<Article>()
 
     fun updateList(articles: ArrayList<Article>) {
@@ -34,6 +34,14 @@ class ArticlesAdapter() : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         fun bind(article: Article) {
             binding.vModel  = ItemArticleViewModel(article)
             binding.executePendingBindings()
+
+            binding.cardViewArticle.setOnClickListener {
+                delegate.onArticleSelected(article)
+            }
         }
+    }
+
+    interface ArticlesAdapterDelegate {
+        fun onArticleSelected(article: Article)
     }
 }

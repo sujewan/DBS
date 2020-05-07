@@ -21,14 +21,14 @@ import dagger.android.support.AndroidSupportInjection
 import javax.inject.Inject
 
 class ArticleListFragment: Fragment() {
-
     @Inject
     lateinit var viewModelFactory: AppViewModelFactory
 
     private val viewModel by lazy { ViewModelProviders.of(this,
         viewModelFactory).get(HomeActivityViewModel::class.java) }
 
-    lateinit var binding : FragmentArticleBinding
+    private lateinit var binding : FragmentArticleBinding
+    private lateinit var delegate: ArticlesAdapter.ArticlesAdapterDelegate
 
     companion object {
         fun newInstance() : ArticleListFragment {
@@ -42,11 +42,16 @@ class ArticleListFragment: Fragment() {
     override fun onAttach(context: Context) {
         AndroidSupportInjection.inject(this)
         super.onAttach(context)
+        if (context is ArticlesAdapter.ArticlesAdapterDelegate) {
+            delegate = context
+        } else {
+            throw ClassCastException("$context must implement ArticlesAdapterDelegate.")
+        }
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_article, container, false)
-        if ( savedInstanceState == null ) {
+        if (savedInstanceState == null) {
             viewModel.firstTime = true
         }
 
@@ -62,7 +67,7 @@ class ArticleListFragment: Fragment() {
         val linearLayout = LinearLayoutManager(context)
         binding.rvArticles.layoutManager = linearLayout
         binding.rvArticles.setHasFixedSize(true)
-        viewModel.adapter = ArticlesAdapter()
+        viewModel.adapter = ArticlesAdapter(delegate)
         binding.rvArticles.adapter = viewModel.adapter
     }
 

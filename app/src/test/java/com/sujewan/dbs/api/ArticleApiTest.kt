@@ -83,4 +83,18 @@ class ArticleApiTest: BaseTest() {
         MatcherAssert.assertThat(articles, CoreMatchers.nullValue())
         MatcherAssert.assertThat(articles?.get(0), CoreMatchers.nullValue())
     }
+
+    @Test
+    fun getArticleById_Success() {
+        enqueueResponse("get_article_data_1.json")
+        val articleDes = LiveDataTestUtil.getValue(service.getArticleById(1)).body
+
+        val request: RecordedRequest = mockWebServer.takeRequest()
+        MatcherAssert.assertThat(request.path, CoreMatchers.`is`("/article/?id=1"))
+        MatcherAssert.assertThat(articleDes, CoreMatchers.notNullValue())
+
+        MatcherAssert.assertThat(articleDes?.id, CoreMatchers.`is`(1))
+        MatcherAssert.assertThat(articleDes?.desc,
+            CoreMatchers.`is`("this is article 1 long text. Sitting mistake towards his few country ask. "))
+    }
 }

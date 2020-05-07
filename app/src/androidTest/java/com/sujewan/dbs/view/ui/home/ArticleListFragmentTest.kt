@@ -4,6 +4,7 @@ import android.content.res.Resources
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import androidx.test.espresso.Espresso
+import androidx.test.espresso.action.ViewActions
 import androidx.test.espresso.assertion.ViewAssertions
 import androidx.test.espresso.contrib.RecyclerViewActions
 import androidx.test.espresso.matcher.RootMatchers
@@ -36,10 +37,13 @@ class ArticleListFragmentTest {
         private const val ITEM_LAST_ITEM = "Article 4 title"
     }
 
+
     @Before
     fun initActivity() {
         recyclerView = activityRule.activity.findViewById(R.id.rv_articles)
         recyclerViewMatcher = RecyclerViewMatcher(R.id.rv_articles)
+
+        activityRule.activity.supportFragmentManager.beginTransaction()
     }
 
     @Test
@@ -110,6 +114,28 @@ class ArticleListFragmentTest {
                     )
                 )
             )
+    }
+
+    @Test
+    fun testRecyclerViewItemClick() {
+        try {
+            Thread.sleep(2000)
+        } catch (e: InterruptedException) {
+            e.printStackTrace()
+        }
+
+        // Move to the position
+        Espresso
+            .onView(withId(R.id.rv_articles))
+            .perform(
+                RecyclerViewActions.scrollToPosition<RecyclerView.ViewHolder>(1)
+            )
+
+        // Click on the item cell
+        Espresso
+            .onView(recyclerViewMatcher!!.atPositionOnView(1, R.id.cardView_article))
+            .perform(ViewActions.click())
+
     }
 
     inner class RecyclerViewMatcher(private val recyclerViewId: Int) {

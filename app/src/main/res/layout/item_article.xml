@@ -32,10 +32,11 @@
 
                 <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/imgStripe"
+                    android:visibility="gone"
                     android:background="@drawable/stripe_bg"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/lblTitle"
+                    app:layout_constraintBottom_toBottomOf="@+id/lblDate"
                     android:layout_width="@dimen/stripe_width"
                     android:layout_height="0dp"/>
 

@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="vModel"
+            type="com.sujewan.dbs.view.ui.home.ItemArticleViewModel"/>
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardView"
+            android:layout_marginTop="@dimen/common_small_margin"
+            android:layout_marginBottom="@dimen/common_small_margin"
+            android:layout_marginStart="@dimen/common_margin"
+            android:layout_marginEnd="@dimen/common_margin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="@dimen/common_menu_margin"
+            app:cardElevation="@dimen/common_tiny_margin"
+            app:layout_constraintStart_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toStartOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/imgStripe"
+                    android:background="@drawable/stripe_bg"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:layout_width="@dimen/stripe_width"
+                    android:layout_height="0dp"/>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/lblTitle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/common_margin"
+                    android:layout_marginTop="@dimen/common_margin"
+                    android:layout_marginEnd="@dimen/common_menu_margin"
+                    android:fontFamily="@font/nunito_semi_bold"
+                    android:maxLines="2"
+                    android:text="@{vModel.title}"
+                    android:textColor="@color/primary_text_color"
+                    android:textSize="@dimen/title_text_size"
+                    app:layout_constraintEnd_toStartOf="@+id/imgAvatar"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toEndOf="@+id/imgStripe"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/lblDate"
+                    android:text="@{String.valueOf(vModel.lastUpdate)}"
+                    android:textColor="@color/secondary_text_color"
+                    android:fontFamily="@font/nunito_regular"
+                    android:textSize="@dimen/caption_text_size"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toStartOf="@+id/lblTitle"
+                    app:layout_constraintEnd_toEndOf="@+id/lblTitle"
+                    app:layout_constraintTop_toBottomOf="@+id/lblTitle"/>
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/imgAvatar"
+                    android:layout_width="@dimen/avatar_image_height"
+                    android:layout_height="@dimen/avatar_image_height"
+                    app:circularImageUrl="@{vModel.imageUrl}"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:layout_margin="@dimen/common_margin"/>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/lblShortDescription"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/common_margin"
+                    android:layout_marginEnd="@dimen/common_menu_margin"
+                    android:fontFamily="@font/nunito_regular"
+                    android:text="@{vModel.shortDes}"
+                    android:paddingBottom="@dimen/common_margin"
+                    android:textColor="@color/primary_text_color"
+                    android:textSize="@dimen/sub_title_text_size"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/lblTitle"
+                    app:layout_constraintTop_toBottomOf="@+id/lblDate" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <View android:layout_width="0dp"
+            android:layout_height="@dimen/common_small_margin"
+            app:layout_constraintTop_toBottomOf="@+id/cardView"
+            app:layout_constraintStart_toStartOf="@+id/cardView"
+            app:layout_constraintEnd_toEndOf="@+id/cardView"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

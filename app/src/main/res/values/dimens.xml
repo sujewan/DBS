@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="common_margin">16dp</dimen>
+    <dimen name="common_small_margin">8dp</dimen>
+    <dimen name="common_tiny_margin">4dp</dimen>
+    <dimen name="common_menu_margin">12dp</dimen>
+    <dimen name="stripe_width">6dp</dimen>
+
+    <dimen name="avatar_image_height">40dp</dimen>
+
+    <!-- Text Sizes -->
+    <dimen name="headline_text_size">24sp</dimen>
+    <dimen name="title_text_size">16sp</dimen>
+    <dimen name="caption_text_size">12sp</dimen>
+    <dimen name="sub_title_text_size">14sp</dimen>
+    <dimen name="common_double_margin">32dp</dimen>
+</resources>

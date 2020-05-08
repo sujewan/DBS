@@ -89,7 +89,8 @@ class ArticleListFragment: Fragment() {
     }
 
     private fun renderDataState(items : List<Article>) {
-        viewModel.adapter.updateList(items as ArrayList<Article>)
+        val sortListedData = items.sortedByDescending { it.lastUpdate }
+        viewModel.adapter.updateList(sortListedData)
 
         binding.loadingView.visibility = View.GONE
         binding.loadingView.pauseAnimation()

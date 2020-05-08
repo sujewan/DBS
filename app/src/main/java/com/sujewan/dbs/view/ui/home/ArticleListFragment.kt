@@ -5,6 +5,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.AnimationUtils
+import android.view.animation.LayoutAnimationController
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -44,6 +46,7 @@ class ArticleListFragment: Fragment() {
         super.onAttach(context)
         if (context is ArticlesAdapter.ArticlesAdapterDelegate) {
             delegate = context
+            viewModel.firstTime = true
         } else {
             throw ClassCastException("$context must implement ArticlesAdapterDelegate.")
         }
@@ -51,9 +54,6 @@ class ArticleListFragment: Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_article, container, false)
-        if (savedInstanceState == null) {
-            viewModel.firstTime = true
-        }
 
         initView()
         return binding.root
@@ -95,6 +95,9 @@ class ArticleListFragment: Fragment() {
         binding.loadingView.pauseAnimation()
 
         if(viewModel.firstTime) {
+            val animationController: LayoutAnimationController =
+                AnimationUtils.loadLayoutAnimation(context, R.anim.layout_animation_slide_bottom)
+            binding.rvArticles.layoutAnimation = animationController
             binding.rvArticles.scheduleLayoutAnimation()
             viewModel.firstTime = false
         }

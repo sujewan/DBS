@@ -66,8 +66,7 @@
             app:layout_constraintStart_toStartOf="parent"
             android:layout_marginTop="@dimen/common_margin"
             app:layout_constraintTop_toBottomOf="@+id/lbl_title"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            android:layoutAnimation="@anim/layout_animation_slide_bottom"/>
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

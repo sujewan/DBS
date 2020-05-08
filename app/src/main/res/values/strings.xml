@@ -4,4 +4,7 @@
     <string name="edit">Edit</string>
     <string name="no_data_available">No Data Available</string>
     <string name="server_error">Unable to connect to Server.\nPlease try again later</string>
+    <string name="edit_label">Edit&#160;</string>
+    <string name="cancel">Cancel</string>
+    <string name="save">Save</string>
 </resources>

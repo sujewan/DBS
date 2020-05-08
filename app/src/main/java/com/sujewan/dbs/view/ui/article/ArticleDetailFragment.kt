@@ -24,6 +24,7 @@ class ArticleDetailFragment : Fragment() {
     private val TAG = ArticleDetailFragment::class.java.simpleName
     private lateinit var binding : FragmentArticleDetailBinding
     private lateinit var delegate: ArticleDetailsDelegate
+    private lateinit var articleDesModel: ArticleDescription
 
     @Inject
     lateinit var viewModelFactory: AppViewModelFactory
@@ -77,8 +78,8 @@ class ArticleDetailFragment : Fragment() {
             delegate.onBackButtonPressed()
         }
 
-        binding.layoutToolBar.btnEdit.setOnClickListener {
-            delegate.onEditButtonPressed(article)
+        binding.layoutToolBar.btnToolbarAction.setOnClickListener {
+            delegate.onEditButtonPressed(article, articleDesModel)
         }
     }
 
@@ -100,15 +101,16 @@ class ArticleDetailFragment : Fragment() {
         binding.loadingView.playAnimation()
         binding.placeHolder.layoutPlaceHolder.visibility = View.GONE
         binding.imgAvatar.visibility = View.GONE
-        binding.layoutToolBar.btnEdit.visibility = View.GONE
+        binding.layoutToolBar.btnToolbarAction.visibility = View.GONE
     }
 
     private fun renderDataState(articleDesc: ArticleDescription) {
+        this.articleDesModel = articleDesc
         binding.loadingView.visibility = View.GONE
         binding.loadingView.pauseAnimation()
         binding.placeHolder.layoutPlaceHolder.visibility = View.GONE
         binding.imgAvatar.visibility = View.VISIBLE
-        binding.layoutToolBar.btnEdit.visibility = View.VISIBLE
+        binding.layoutToolBar.btnToolbarAction.visibility = View.VISIBLE
 
         binding.lblArticleDesc.text = articleDesc.desc.capitalize()
     }
@@ -118,7 +120,7 @@ class ArticleDetailFragment : Fragment() {
         binding.loadingView.visibility = View.GONE
         binding.loadingView.pauseAnimation()
         binding.imgAvatar.visibility = View.GONE
-        binding.layoutToolBar.btnEdit.visibility = View.GONE
+        binding.layoutToolBar.btnToolbarAction.visibility = View.GONE
 
         binding.placeHolder.lblPlaceHolder.text = getString(R.string.server_error)
         binding.placeHolder.layoutPlaceHolder.visibility = View.VISIBLE
@@ -126,7 +128,7 @@ class ArticleDetailFragment : Fragment() {
 
     interface ArticleDetailsDelegate {
         fun onBackButtonPressed()
-        fun onEditButtonPressed(article: Article)
+        fun onEditButtonPressed(article: Article, articleDes: ArticleDescription)
     }
 
 }

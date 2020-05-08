@@ -2,7 +2,7 @@ package com.sujewan.dbs.util
 
 class Constants {
     companion object {
-        const val BASE_URL = "https://testdbs3.free.beeceptor.com/"
+        const val BASE_URL = "https://task.free.beeceptor.com/"
 
         const val ARTICLE = "article"
         const val ARTICLE_DES = "article_des"

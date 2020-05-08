@@ -84,14 +84,15 @@ class ArticleListFragment: Fragment() {
     }
 
     private fun renderLoadingState() {
+        binding.placeHolder.layoutPlaceHolder.visibility = View.GONE
         binding.loadingView.visibility = View.VISIBLE
         binding.loadingView.playAnimation()
     }
 
     private fun renderDataState(items : List<Article>) {
-        val sortListedData = items.sortedByDescending { it.lastUpdate }
-        viewModel.adapter.updateList(sortListedData)
+        viewModel.adapter.updateList(items)
 
+        binding.placeHolder.layoutPlaceHolder.visibility = View.GONE
         binding.loadingView.visibility = View.GONE
         binding.loadingView.pauseAnimation()
 
@@ -107,5 +108,8 @@ class ArticleListFragment: Fragment() {
     private fun renderErrorState(throwable: Throwable) {
         binding.loadingView.visibility = View.GONE
         binding.loadingView.pauseAnimation()
+
+        binding.placeHolder.lblPlaceHolder.text = throwable.localizedMessage
+        binding.placeHolder.layoutPlaceHolder.visibility = View.VISIBLE
     }
 }

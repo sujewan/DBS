@@ -44,6 +44,9 @@
             android:textColor="@color/white"
             android:text="@string/articles"/>
 
+        <include
+            android:id="@+id/placeHolder"
+            layout="@layout/layout_placeholder"/>
 
         <com.airbnb.lottie.LottieAnimationView
             android:id="@+id/loading_view"

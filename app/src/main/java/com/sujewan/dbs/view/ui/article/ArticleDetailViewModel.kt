@@ -18,8 +18,4 @@ constructor(
     fun getArticleById(articleId: Int): LiveData<Resource<ArticleDescription>> {
         return articleRepository.getArticleById(articleId)
     }
-
-    fun getArticleByIdFromDB(id: Int): ArticleDescription {
-        return articleDao.getArticleById(id)
-    }
 }

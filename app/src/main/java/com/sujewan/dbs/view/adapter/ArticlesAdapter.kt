@@ -8,10 +8,10 @@ import com.sujewan.dbs.model.Article
 import com.sujewan.dbs.view.ui.home.ItemArticleViewModel
 
 class ArticlesAdapter(private val delegate: ArticlesAdapterDelegate) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
-    private val articleList = ArrayList<Article>()
+    private var articleList = ArrayList<Article>()
 
     fun updateList(articles: List<Article>) {
-        articleList.addAll(articles)
+        articleList = articles as ArrayList<Article>
         notifyDataSetChanged()
     }
 

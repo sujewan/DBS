@@ -62,14 +62,9 @@ class ArticleDetailFragment : Fragment() {
         return binding.root
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        val article: Article = arguments?.getParcelable(ARTICLE)!!
-        val articleDescFromDB = viewModel.getArticleByIdFromDB(article.id)
-        if (articleDescFromDB == null) {
-            observeViewModel()
-        } else {
-            renderDataState(articleDescFromDB)
-        }
+    override fun onResume() {
+        super.onResume()
+        observeViewModel()
     }
 
     private fun initView() {

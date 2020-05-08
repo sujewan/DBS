@@ -12,5 +12,6 @@
     <color name="active_secondary_color">#1873e7</color>
     <color name="colorDivider">#929497</color>
     <color name="placeholder_title_color">#425465</color>
+    <color name="color_red">#F44336</color>
 
 </resources>

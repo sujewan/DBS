@@ -1,15 +1,19 @@
 package com.sujewan.dbs.view.ui.edit
 
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
 import com.sujewan.dbs.R
 import com.sujewan.dbs.model.Article
 import com.sujewan.dbs.model.ArticleDescription
+import com.sujewan.dbs.util.Constants
 import com.sujewan.dbs.util.Constants.Companion.ARTICLE
 import com.sujewan.dbs.util.Constants.Companion.ARTICLE_DES
+import com.sujewan.dbs.view.ui.general.BaseAppCompatActivity
 import dagger.android.AndroidInjection
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
-class ArticleEditActivity : AppCompatActivity(), ArticleEditFragment.ArticleEditDelegate {
+class ArticleEditActivity : BaseAppCompatActivity(), ArticleEditFragment.ArticleEditDelegate {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         AndroidInjection.inject(this)
@@ -38,7 +42,15 @@ class ArticleEditActivity : AppCompatActivity(), ArticleEditFragment.ArticleEdit
         onBackPressed()
     }
 
-    override fun onSaveButtonPressed() {
-        onBackPressed()
+    override fun onShowErrorDialog(errorMessage: String) {
+        showWarningDialog(errorMessage)
+    }
+
+    override fun onShowSuccessDialog(message: String) {
+        showSuccessDialog(message)
+        GlobalScope.launch {
+            delay(Constants.LOADING_SUCCESS_DELAY)
+            finish()
+        }
     }
 }

@@ -6,5 +6,14 @@ class Constants {
 
         const val ARTICLE = "article"
         const val ARTICLE_DES = "article_des"
+
+        // TABLES
+        const val TABLE_ARTICLE_DES_RECORD = "table_article_des"
+
+        // COLUMNS
+        const val RECORD_ID = "id"
+        const val RECORD_DESCRIPTION = "description"
+
+        const val LOADING_SUCCESS_DELAY: Long = 2800
     }
 }

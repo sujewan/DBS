@@ -16,6 +16,7 @@ import com.sujewan.dbs.databinding.FragmentArticleDetailBinding
 import com.sujewan.dbs.factory.AppViewModelFactory
 import com.sujewan.dbs.model.Article
 import com.sujewan.dbs.model.ArticleDescription
+import com.sujewan.dbs.util.Constants.Companion.ARTICLE
 import com.sujewan.dbs.view.ui.home.ItemArticleViewModel
 import dagger.android.support.AndroidSupportInjection
 import javax.inject.Inject
@@ -33,8 +34,6 @@ class ArticleDetailFragment : Fragment() {
         viewModelFactory).get(ArticleDetailViewModel::class.java) }
 
     companion object {
-        private const val ARTICLE = "article"
-
         fun newInstance(article: Article): ArticleDetailFragment {
             val args = Bundle()
             args.putParcelable(ARTICLE, article)
@@ -64,7 +63,13 @@ class ArticleDetailFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        observeViewModel()
+        val article: Article = arguments?.getParcelable(ARTICLE)!!
+        val articleDescFromDB = viewModel.getArticleByIdFromDB(article.id)
+        if (articleDescFromDB == null) {
+            observeViewModel()
+        } else {
+            renderDataState(articleDescFromDB)
+        }
     }
 
     private fun initView() {

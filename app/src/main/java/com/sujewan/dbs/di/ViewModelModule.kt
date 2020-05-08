@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.sujewan.dbs.factory.AppViewModelFactory
 import com.sujewan.dbs.view.ui.article.ArticleDetailViewModel
+import com.sujewan.dbs.view.ui.edit.ArticleEditViewModel
 import com.sujewan.dbs.view.ui.home.HomeActivityViewModel
 import dagger.Binds
 import dagger.Module
@@ -20,6 +21,11 @@ internal abstract class ViewModelModule {
     @IntoMap
     @ViewModelKey(ArticleDetailViewModel::class)
     internal abstract fun bindArticleDetailViewModel(articleDetailViewModel: ArticleDetailViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(ArticleEditViewModel::class)
+    internal abstract fun bindArticleEditViewModel(articleEditViewModel: ArticleEditViewModel): ViewModel
 
     @Binds
     internal abstract fun bindViewModelFactory(appViewModelFactory: AppViewModelFactory) : ViewModelProvider.Factory

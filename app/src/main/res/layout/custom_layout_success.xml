@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/imgLoadingSuccess"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:lottie_rawRes="@raw/lottie_file_sucess"
+        app:layout_constraintWidth_percent="0.25"
+        app:lottie_autoPlay="true"
+        android:layout_marginStart="@dimen/common_margin"
+        app:layout_constraintDimensionRatio="1"
+        app:lottie_loop="false"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:textColor="@color/primary_text_color"
+        android:textSize="@dimen/title_text_size"
+        android:fontFamily="@font/nunito_regular"
+        android:text="@string/please_wait"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:gravity="center_vertical"
+        android:id="@+id/lblSuccessDialog"
+        app:layout_constraintStart_toEndOf="@+id/imgLoadingSuccess"
+        android:layout_marginStart="@dimen/common_margin"
+        android:layout_marginEnd="@dimen/common_margin"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

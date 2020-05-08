@@ -13,6 +13,7 @@ import javax.inject.Singleton
     (ActivityModule::class),
     (FragmentModule::class),
     (ViewModelModule::class),
+    (DatabaseModule::class),
     (NetworkModule::class)])
 interface AppComponent {
 

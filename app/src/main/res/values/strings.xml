@@ -7,4 +7,7 @@
     <string name="edit_label">Edit&#160;</string>
     <string name="cancel">Cancel</string>
     <string name="save">Save</string>
+    <string name="error_msg_empty_desc">Description cannot be empty.\nPlease type something</string>
+    <string name="ok">OK</string>
+    <string name="please_wait">Please wait…</string>
 </resources>
